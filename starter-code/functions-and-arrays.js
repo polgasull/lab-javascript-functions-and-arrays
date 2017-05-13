@@ -61,6 +61,11 @@ console.log(average);
 
 // Array of Strings
 function averageWordLength (array) {
+  var totalLength = array.reduce(function (sum, number){
+      return sum + number.length;
+    }, 0);
+
+    return totalLength / array.length;
 
 }
 
@@ -81,7 +86,14 @@ console.log(averageLength);
 
 // Unique Arrays
 function uniquifyArray (array) {
-  
+  var newArray = [];
+
+   array.forEach (function (word) {
+     if (newArray.indexOf(word) == -1)
+       newArray.push(word);
+   });
+
+   return newArray;
 }
 
 var words = [
@@ -102,7 +114,14 @@ console.log(uniqued);
 
 // Finding Elements
 function doesWordExist (wordsArray, word) {
+  var exist = false;
 
+    wordsArray.forEach (function (currentWord) {
+      if (currentWord === word)
+        exist = true;
+    });
+
+    return exist;
 }
 
 var words = [
@@ -124,7 +143,14 @@ console.log(hasDog);
 
 // Counting Repetion
 function howManyTimes (words, word) {
+  var appearances = 0;
 
+    words.forEach (function (currentWord) {
+      if (currentWord === word)
+      appearances++;
+    });
+
+    return appearances;
 }
 
 var words = [
@@ -149,7 +175,26 @@ console.log(howManyDog);
 
 // Bonus Quest
 function greatestProduct (matrix) {
+  var greatProduct = 0;
+  var greaterPosition;
 
+  for (var i = 0; i < matrix.length; i++) {
+    for (var j = 0; j < matrix[i].length; j++) {
+      var top    = i > 0 ? matrix[i - 1][j] : 1;
+      var bottom = i < matrix.length - 1 ? matrix[i + 1][j] : 1;
+      var left   = j > 0 ? matrix[i][j - 1] : 1;
+      var right  = j < matrix.length - 1 ? matrix[i][j + 1] : 1;
+
+      var result = top * bottom * left * right;
+
+      if (result > greatProduct){
+        greatProduct = result;
+        greaterPosition = [i,j];
+      }
+    }
+  }
+
+  return [greatProduct, greaterPosition];
 }
 
 var matrix = [
