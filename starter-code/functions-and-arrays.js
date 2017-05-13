@@ -16,7 +16,6 @@ function findLongestWord (words) {
 
   words.forEach(function(word) {
     var letter = word.length;
-    console.log(letter);
     if(letter > max){
       max = letter
     }
@@ -38,7 +37,9 @@ console.log(longest);
 
 // Calculating a Sum
 function sumArray (array) {
-
+  return array.reduce(function (sum, number) {
+    return sum + number;
+  }, 0);
 }
 
 var numbers = [6, 12, 1, 18, 13, 16, 2, 1, 8, 10];
@@ -47,7 +48,11 @@ console.log(total);
 
 // Calculate the Average
 function averageNumbers (array) {
+ if (array.length > 0) {
+   return sumArray(array) / array.length;
+ }
 
+ return 0;
 }
 
 var numbers = [2, 6, 9, 10, 7, 4, 1, 9];
@@ -76,7 +81,7 @@ console.log(averageLength);
 
 // Unique Arrays
 function uniquifyArray (array) {
-
+  
 }
 
 var words = [
